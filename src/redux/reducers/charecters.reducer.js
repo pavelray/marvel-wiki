@@ -1,7 +1,10 @@
+import { MSG_ERROR_NO_MATCH } from '../../utility/constants';
 import CharecterTypes from '../types/charecter.types';
 const INITIAL_STATE = {
     charecters: [], // May contain more than one value
-    errorMessage: ''
+    comics: [],
+    errorMessage: '',
+    loading: false
 }
 
 const charecterReducer = (state = INITIAL_STATE, acion) => {
@@ -10,13 +13,29 @@ const charecterReducer = (state = INITIAL_STATE, acion) => {
             return {
                 ...state,
                 charecters: acion.payload,
-                errorMessage:''
+                errorMessage:'',
+            };
+        case CharecterTypes.GET_CHARECTER_COMICS_SUCCESS:
+            return {
+                ...state,
+                comics: acion.payload,
+                errorMessage:'',
             };
         case CharecterTypes.NO_MATCH_FOUND:
             return {
                 ...state,
                 charecters: [],
-                errorMessage: 'No match found'
+                errorMessage: MSG_ERROR_NO_MATCH,
+            };
+        case 'START_LOADING':
+            return {
+                ...state,
+                loading: true
+            };
+        case 'STOP_LOADING':
+            return {
+                ...state,
+                loading: false
             };
         default:
             return state;

@@ -18,3 +18,12 @@ export const COLORS = {
     type4: '#81B29A',
     type5: '#F2CC8F'
 }
+
+export const MENU_ITEMS = [
+    {key: 'Home', value: '/home'},
+    {key: 'Charecters', value: '/charecters'},
+    {key: 'Search', value: '/search'}
+]
+
+export const APP_NAME = 'Marvel Wiki';
+export const MSG_ERROR_NO_MATCH = 'Sorry ! No match found !!'

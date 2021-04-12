@@ -19,3 +19,27 @@ export const getFilterFromPayload = (payload) => {
     }
     return '';
 }
+
+export const getImageUrl = (thumbnail) => {
+    if(thumbnail)
+        return `${thumbnail.path}.${thumbnail.extension}`;
+    
+    return "";
+}
+
+export const getPrice = (prices) => {
+
+    if(prices?.length >0){
+        return Number(prices[0].price).toLocaleString();
+    }
+    return "";
+}
+
+export const getReleaseDate = (dates) => {
+    if(dates?.length>0){
+        const dateArr = new Date(dates[0].date).toDateString().split(" ");
+        const dateStr = `${dateArr[1]}, ${dateArr[2]} ${dateArr[3]}`
+        return dateStr;
+    }
+    return "";
+}

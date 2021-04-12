@@ -8,5 +8,6 @@ export const ErrorContainer = styled.div`
     font-weight: bold;
     color: ${COLORS.type2};
     text-align: center;
+    text-transform: uppercase;
 
 `

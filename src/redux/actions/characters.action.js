@@ -34,3 +34,23 @@ export const searchCharectersSuccess = (charecters) => ({
 export const noMatchFound = () => ({
     type: CharecterActions.NO_MATCH_FOUND
 })
+
+export const getCharecterComics = (collectionURI) => ({
+    type: CharecterActions.GET_CHARECTER_COMICS,
+    payload: collectionURI
+});
+
+export const getCharecterComicsSuccess = (comics) => ({
+    type: CharecterActions.GET_CHARECTER_COMICS_SUCCESS,
+    payload: comics
+});
+
+export const startLoading = () => ({
+    type: 'START_LOADING',
+    payload: true
+});
+
+export const stoptLoading = () => ({
+    type: 'STOP_LOADING',
+    payload: false
+});
