@@ -3,7 +3,7 @@ export const API_KEYS = {
     private: 'e904463e3ccd0238032bea04a8fdeaa57e50c631',
 }
 
-export const MARVEL_API_URL = 'http://gateway.marvel.com/v1/public';
+export const MARVEL_API_URL = 'https://gateway.marvel.com/v1/public';
 
 export const AVENGERS_LOGO_URL = './161812330756475294.png';
 
