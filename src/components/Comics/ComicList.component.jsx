@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharecterComics, startLoading } from "../../redux/actions/characters.action";
 import { isLoading, selectCharecterComics } from "../../redux/selectors/charecter.selectors";
+import { MARVEL_API_URL } from "../../utility/constants";
 import Spinner from "../Loader/Loader.component";
 import Comic from "./Comic.component";
 
@@ -12,8 +13,9 @@ const ComicList = ({ collectionURI, total }) => {
   const loading = useSelector(isLoading);
  
   useEffect(() => {
+    const uri = `${MARVEL_API_URL}/characters/${collectionURI}/comics`;
     dispatch(startLoading());
-    dispatch(getCharecterComics(collectionURI));
+    dispatch(getCharecterComics(uri));
   }, [collectionURI]);
 
 

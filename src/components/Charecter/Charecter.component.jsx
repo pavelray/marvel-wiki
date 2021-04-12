@@ -6,7 +6,7 @@ import ComicList from "../Comics/ComicList.component";
 import { CharecterWrapper } from "./Charecter.styles";
 
 const Charecter = ({ charecter }) => {
-  const { name, description, thumbnail, modified, urls, comics } = charecter;
+  const { name, description, thumbnail, modified, urls, comics, id } = charecter;
   const image = getImageUrl(thumbnail);
   return (
     <CharecterWrapper>
@@ -41,7 +41,7 @@ const Charecter = ({ charecter }) => {
           </Item>
         </Item.Group>
         <ComicList
-                  collectionURI={comics.collectionURI}
+                  collectionURI={id}
                   total={comics.available}
                 />
       </div>
