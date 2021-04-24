@@ -26,4 +26,6 @@ export const MENU_ITEMS = [
 ]
 
 export const APP_NAME = 'Marvel Wiki';
-export const MSG_ERROR_NO_MATCH = 'Sorry ! No match found !!'
+export const MSG_ERROR_NO_MATCH = 'Sorry ! No match found !!';
+
+export const GITHUB_PROFILE_LINK = 'https://github.com/pavelray';

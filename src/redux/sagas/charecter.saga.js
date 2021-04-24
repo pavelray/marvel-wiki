@@ -4,6 +4,7 @@ import { getFilterFromPayload, getQueryParams } from "../../utility";
 import { STATUS } from "../../utility/constants";
 import {
   getCharecterComicsSuccess,
+  getCharectersSuccess,
   noMatchFound,
   searchCharectersSuccess,
   stoptLoading,
@@ -29,7 +30,6 @@ export function* searchCharecters({ payload }) {
 
 export function* getCharecterComics({ payload }) {
   try {
-    
     const queryParams = getQueryParams();
     const url = `${payload}?${queryParams}`;
     const response = yield marvelApi.get(`${url}`);
@@ -45,6 +45,29 @@ export function* getCharecterComics({ payload }) {
   }
 }
 
+export function* getAllCharecters({payload}) {
+  try {
+    const queryParams = getQueryParams();
+    const filters = getFilterFromPayload(payload);
+    const url = `/characters?${queryParams}${filters}`;
+    const response = yield marvelApi.get(`${url}`);
+    if (response?.data?.code === STATUS.OK) {
+      const charecters = response.data.data;
+      if (charecters.results.length > 0) {
+        yield put(getCharectersSuccess(charecters));
+        yield put(stoptLoading());
+      }
+      else {
+        yield put(noMatchFound());
+        yield put(stoptLoading());
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    yield put(stoptLoading());
+  }
+}
+
 export function* watchCharecterSagas() {
   yield takeLatest(CharecterActions.SEARCH_CHARECTER, searchCharecters);
 }
@@ -53,6 +76,14 @@ export function* watchGetCharecterComics() {
   yield takeLatest(CharecterActions.GET_CHARECTER_COMICS, getCharecterComics);
 }
 
+export function* watchGetCharecters() {
+  yield takeLatest(CharecterActions.GET_CHARECTERS, getAllCharecters);
+}
+
 export function* charecterSagas() {
-  yield all([call(watchCharecterSagas), call(watchGetCharecterComics)]);
+  yield all([
+    call(watchCharecterSagas),
+    call(watchGetCharecterComics),
+    call(watchGetCharecters),
+  ]);
 }

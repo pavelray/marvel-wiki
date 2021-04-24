@@ -4,7 +4,7 @@ import CharecterActions from '../types/charecter.types';
 // Default gets first 10 records
 export const getCharecters = () => ({
     type: CharecterActions.GET_CHARECTERS,
-    payload: {filter:{limit:10 , offset:0}}
+    payload: {filter:{limit:20 , offset:0}}
 });
 
 // Gets all cherectrs of Marvel World
@@ -15,6 +15,11 @@ export const getCharectersWithPagination = (filter) => ({
     payload: filter
 });
 
+
+export const getCharectersSuccess = (charecters) => ({
+    type: CharecterActions.GET_CHARECTERS_SUCCESS,
+    payload: charecters
+});
 /**
  * Search any marvel charecter by name, startswith any filter
  * Available filters ( name, nameStartsWith, modifiedSince,
@@ -53,4 +58,8 @@ export const startLoading = () => ({
 export const stoptLoading = () => ({
     type: 'STOP_LOADING',
     payload: false
+});
+
+export const initState = () => ({
+    type: 'INIT_STATE'
 });

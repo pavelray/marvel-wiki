@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { COLORS } from "../../utility/constants";
 
@@ -122,5 +123,15 @@ export const Nav = styled.nav`
         text-decoration: underline;
       }
     }
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${COLORS.type1};
+  text-decoration: none;
+  font-size: 2rem;
+  text-transform: uppercase;
+  &:hover {
+    text-decoration: underline;
   }
 `;

@@ -1,8 +1,13 @@
 import React from "react";
 import { APP_NAME } from "../../utility/constants";
-import { Nav } from "./Header.styles";
+import { Nav, StyledLink } from "./Header.styles";
 
 const Header = () => {
+  const handleMenuClick = () => {
+    document.getElementById(
+      "responsive-menu"
+    ).checked = !document.getElementById("responsive-menu").checked;
+  };
   return (
     <Nav>
       <input id="responsive-menu" type="checkbox" />
@@ -12,16 +17,16 @@ const Header = () => {
       <div id="overlay"></div>
       <ul>
         <li>
-          <a href="/home">Home</a>
+          <StyledLink to="/" onClick={handleMenuClick}>Home</StyledLink>
         </li>
         <li>
-          <a href="/charecters">Charecters</a>
+          <StyledLink to="/charecters" onClick={handleMenuClick}>Charecters</StyledLink>
         </li>
         <li>
-          <a href="/search">Search</a>
+          <StyledLink to="/search" onClick={handleMenuClick}>Search</StyledLink>
         </li>
         <li>
-          <a href="/about">About</a>
+          <StyledLink to="/about" onClick={handleMenuClick}>About</StyledLink>
         </li>
       </ul>
     </Nav>
